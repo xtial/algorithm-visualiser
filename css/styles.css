@@ -1,0 +1,727 @@
+/* Modern Dark Theme Colors */
+:root {
+    --bg-primary: #121212;    /* Almost black */
+    --bg-secondary: #1e1e1e;  /* Dark gray */
+    --bg-tertiary: #2d2d2d;   /* Lighter gray */
+    
+    --accent-primary: #ffffff;   /* Pure white */
+    --accent-secondary: #d4d4d4;  /* Light gray */
+    --accent-success: #4caf50;    /* Green kept for status */
+    --accent-warning: #ffc107;    /* Yellow kept for status */
+    --accent-danger: #f44336;     /* Red kept for status */
+    
+    --text-primary: #ffffff;     /* White */
+    --text-secondary: #a0a0a0;   /* Gray */
+    --text-muted: #666666;       /* Darker gray */
+    
+    --border-color: #333333;
+    --shadow-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    min-height: 100vh;
+}
+
+/* Layout */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* Header */
+header {
+    background-color: var(--bg-secondary);
+    box-shadow: 0 2px 8px var(--shadow-color);
+    padding: 1rem 0;
+    margin-bottom: 2rem;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--accent-primary);
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--accent-primary);
+}
+
+/* Main Content */
+main {
+    padding: 2rem 0;
+}
+
+/* Control Panel */
+.control-panel {
+    background-color: var(--bg-secondary);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 6px var(--shadow-color);
+}
+
+.controls-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 1rem;
+    align-items: center;
+}
+
+/* Select Styles */
+select {
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 6px;
+    background-color: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+select:focus {
+    outline: none;
+    border-color: var(--accent-primary);
+}
+
+optgroup {
+    background-color: var(--bg-tertiary);
+}
+
+option {
+    background-color: var(--bg-tertiary);
+    padding: 0.5rem;
+}
+
+/* Button Styles */
+.button-group {
+    display: flex;
+    gap: 1rem;
+}
+
+button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.btn-primary {
+    background-color: var(--bg-tertiary);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+}
+
+.btn-primary:hover:not(:disabled) {
+    background-color: var(--accent-primary);
+    color: var(--bg-primary);
+}
+
+.btn-success {
+    background-color: var(--accent-success);
+    color: var(--text-primary);
+}
+
+.btn-success:hover:not(:disabled) {
+    filter: brightness(1.1);
+}
+
+/* Slider Controls */
+.slider-group {
+    display: flex;
+    gap: 2rem;
+}
+
+.slider-control {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.slider-control label {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+input[type="range"] {
+    width: 100%;
+    -webkit-appearance: none;
+    height: 4px;
+    background: var(--bg-tertiary);
+    border-radius: 2px;
+    outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    background: var(--accent-primary);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+    background: var(--accent-secondary);
+}
+
+/* Visualization Area */
+.visualization-container {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    min-height: 600px;
+}
+
+#visualization-area {
+    background-color: var(--bg-secondary);
+    border-radius: 8px;
+    height: 600px;
+    min-height: 400px;
+    position: relative;
+    overflow: auto;
+    box-shadow: inset 0 2px 4px var(--shadow-color);
+}
+
+/* Info Panel */
+.info-panel {
+    background-color: var(--bg-secondary);
+    border-radius: 8px;
+    padding: 1.5rem;
+}
+
+.info-section {
+    margin-bottom: 1.5rem;
+}
+
+.info-section:last-child {
+    margin-bottom: 0;
+}
+
+.info-section h3 {
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.timing-info {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem;
+    background-color: var(--bg-tertiary);
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+}
+
+.timing-info span {
+    color: var(--accent-primary);
+    font-family: monospace;
+}
+
+/* Array Bar Styles */
+.array-bar {
+    position: absolute;
+    bottom: 0;
+    background-color: var(--accent-primary);
+    transition: all 0.3s ease;
+}
+
+.array-bar .value-label {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.array-bar:hover .value-label {
+    opacity: 1;
+}
+
+.array-bar.comparing {
+    background-color: var(--accent-warning);
+}
+
+.array-bar.sorted {
+    background-color: var(--accent-success);
+}
+
+.array-bar.current {
+    background-color: var(--accent-danger);
+}
+
+/* Keyboard Shortcuts */
+.shortcuts-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+}
+
+.shortcut-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+kbd {
+    background-color: var(--bg-tertiary);
+    color: var(--text-secondary);
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-family: monospace;
+    min-width: 1.5rem;
+    text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .controls-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .visualization-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .button-group {
+        flex-direction: column;
+    }
+    
+    .slider-group {
+        flex-direction: column;
+    }
+    
+    .nav-links {
+        display: none;
+    }
+}
+
+/* Animations */
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
+}
+
+.animate-pulse {
+    animation: pulse 1s ease-in-out infinite;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--bg-tertiary);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-primary);
+}
+
+/* Data Input Section */
+.data-input-section {
+    background-color: var(--bg-tertiary);
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 1rem 0;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.input-group:last-child {
+    margin-bottom: 0;
+}
+
+.input-group input[type="text"],
+.input-group textarea {
+    padding: 0.75rem;
+    border-radius: 6px;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    font-family: monospace;
+    font-size: 0.9rem;
+    width: 100%;
+    resize: vertical;
+}
+
+.input-group textarea {
+    min-height: 100px;
+}
+
+.input-group input[type="text"]:focus,
+.input-group textarea:focus {
+    outline: none;
+    border-color: var(--accent-primary);
+}
+
+.input-group .btn-secondary {
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.input-group .btn-secondary:hover:not(:disabled) {
+    background-color: var(--accent-primary);
+    border-color: var(--accent-primary);
+}
+
+.input-group .input-label {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 0.25rem;
+}
+
+.input-group .input-hint {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    margin-top: 0.25rem;
+}
+
+/* Graph Visualization Styles */
+.graph-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    padding: 2rem;
+}
+
+.graph-node {
+    fill: var(--bg-tertiary);
+    stroke: var(--accent-primary);
+    stroke-width: 2;
+    transition: all 0.3s ease;
+}
+
+.graph-node.visited {
+    fill: var(--accent-success);
+}
+
+.graph-node.current {
+    fill: var(--accent-warning);
+    transform: scale(1.1);
+    transform-origin: center;
+    filter: drop-shadow(0 0 4px var(--accent-warning));
+}
+
+.graph-node.active {
+    fill: var(--accent-primary);
+    filter: drop-shadow(0 0 4px var(--accent-primary));
+}
+
+.graph-edge {
+    stroke: var(--text-secondary);
+    stroke-width: 2;
+    transition: all 0.3s ease;
+}
+
+.graph-edge.active {
+    stroke: var(--accent-primary);
+    stroke-width: 3;
+    filter: drop-shadow(0 0 4px var(--accent-primary));
+}
+
+.graph-edge.highlight {
+    stroke: var(--accent-warning);
+    stroke-width: 3;
+    stroke-dasharray: 5;
+    animation: dash 1s linear infinite;
+}
+
+.graph-edge-weight {
+    fill: var(--text-primary);
+    font-size: 0.8rem;
+    font-family: monospace;
+    pointer-events: none;
+    background-color: var(--bg-tertiary);
+    padding: 2px 4px;
+    border-radius: 4px;
+}
+
+.graph-node-text {
+    fill: var(--text-primary);
+    font-size: 0.9rem;
+    font-weight: 600;
+    pointer-events: none;
+    user-select: none;
+}
+
+.graph-node[data-distance]:after {
+    content: attr(data-distance);
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--bg-tertiary);
+    color: var(--text-primary);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    opacity: 0.9;
+}
+
+.graph-node[data-level]:after {
+    content: "L" attr(data-level);
+}
+
+.graph-node[data-depth]:after {
+    content: "D" attr(data-depth);
+}
+
+@keyframes dash {
+    from {
+        stroke-dashoffset: 10;
+    }
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+/* Tree Visualization Styles */
+.tree-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    overflow: auto;
+}
+
+.tree-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.tree-node-content {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--accent-secondary);
+    border: 2px solid var(--accent-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-primary);
+    font-weight: 600;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.tree-node-content::before,
+.tree-node-content::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 2rem;
+    background-color: var(--text-secondary);
+    bottom: -2rem;
+    transform-origin: top;
+}
+
+.tree-node-content::before {
+    transform: rotate(-45deg);
+    left: 50%;
+}
+
+.tree-node-content::after {
+    transform: rotate(45deg);
+    right: 50%;
+}
+
+.tree-node-content.current {
+    background-color: var(--accent-warning);
+    transform: scale(1.1);
+}
+
+.tree-node-content.comparing {
+    background-color: var(--accent-primary);
+}
+
+.tree-node-content.visited {
+    background-color: var(--accent-success);
+}
+
+.tree-node-children {
+    display: flex;
+    gap: 2rem;
+}
+
+/* Fix for SVG elements in dark mode */
+svg {
+    background-color: var(--bg-secondary) !important;
+}
+
+svg text {
+    fill: var(--text-primary) !important;
+}
+
+svg line {
+    stroke: var(--text-secondary) !important;
+}
+
+svg circle {
+    fill: var(--accent-secondary) !important;
+    stroke: var(--accent-primary) !important;
+}
+
+svg circle.visited {
+    fill: var(--accent-success) !important;
+}
+
+svg circle.current {
+    fill: var(--accent-warning) !important;
+}
+
+svg line.active {
+    stroke: var(--accent-primary) !important;
+    stroke-width: 3 !important;
+}
+
+svg line.highlight {
+    stroke: var(--accent-warning) !important;
+    stroke-width: 3 !important;
+    stroke-dasharray: 5 !important;
+}
+
+.highlight {
+    background-color: var(--accent-primary);
+    color: var(--bg-primary) !important;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.highlight:hover {
+    background-color: var(--accent-secondary);
+    transform: translateY(-1px);
+}
+
+/* Algorithm Explanations Page Styles */
+.math-formula {
+    font-size: 1.2rem;
+    line-height: 1.6;
+}
+
+.pseudocode {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--text-primary);
+}
+
+.example {
+    line-height: 1.6;
+}
+
+.example h4 {
+    color: var(--accent-primary);
+    margin-bottom: 0.5rem;
+}
+
+.example p {
+    margin: 0.5rem 0;
+}
+
+.example strong {
+    color: var(--accent-secondary);
+}
+
+/* Responsive Design for Algorithm Explanations */
+@media (max-width: 768px) {
+    .explanation-container {
+        padding: 1rem;
+    }
+
+    .algorithm-section {
+        padding: 1rem;
+    }
+
+    .complexity-item {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .nav-section ul {
+        justify-content: center;
+    }
+}
+
+/* Dark mode support for algorithm explanations */
+@media (prefers-color-scheme: dark) {
+    .math-formula,
+    .pseudocode,
+    .example {
+        background-color: var(--bg-tertiary-dark, #2a2a2a);
+    }
+
+    .algorithm-section {
+        background-color: var(--bg-secondary-dark, #1a1a1a);
+    }
+} 

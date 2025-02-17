@@ -1,0 +1,788 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algorithm Explanations - Deep Dive</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .explanation-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .algorithm-section {
+            background-color: var(--bg-secondary);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px var(--shadow-color);
+        }
+
+        .algorithm-section h2 {
+            color: var(--accent-primary);
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .algorithm-section h3 {
+            color: var(--accent-secondary);
+            margin: 1.5rem 0 1rem;
+            font-size: 1.4rem;
+        }
+
+        .complexity-box {
+            background-color: var(--bg-tertiary);
+            padding: 1rem;
+            border-radius: 6px;
+            margin: 1rem 0;
+        }
+
+        .complexity-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .complexity-item:last-child {
+            border-bottom: none;
+        }
+
+        .math-formula {
+            font-family: 'Times New Roman', serif;
+            background-color: var(--bg-tertiary);
+            padding: 1rem;
+            border-radius: 6px;
+            margin: 1rem 0;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .pseudocode {
+            background-color: var(--bg-tertiary);
+            padding: 1rem;
+            border-radius: 6px;
+            margin: 1rem 0;
+            font-family: monospace;
+            white-space: pre;
+            overflow-x: auto;
+        }
+
+        .example {
+            background-color: var(--bg-tertiary);
+            padding: 1rem;
+            border-radius: 6px;
+            margin: 1rem 0;
+        }
+
+        .nav-section {
+            position: sticky;
+            top: 0;
+            background-color: var(--bg-secondary);
+            padding: 1rem;
+            margin-bottom: 2rem;
+            z-index: 100;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .nav-section ul {
+            list-style: none;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-section a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-section a:hover {
+            background-color: var(--bg-tertiary);
+            color: var(--accent-primary);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <h1 class="logo">Algorithm Deep Dive</h1>
+            <nav class="nav-links">
+                <a href="index.html">Back to Visualizer</a>
+            </nav>
+        </div>
+    </header>
+
+    <nav class="nav-section">
+        <div class="container">
+            <ul>
+                <li><a href="#sorting">Sorting</a></li>
+                <li><a href="#searching">Searching</a></li>
+                <li><a href="#graph">Graph</a></li>
+                <li><a href="#tree">Tree</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="explanation-container">
+        <section id="sorting" class="algorithm-section">
+            <h2>Sorting Algorithms</h2>
+            
+            <div id="bubble-sort">
+                <h3>Bubble Sort</h3>
+                <p>Bubble Sort is one of the simplest sorting algorithms that repeatedly steps through the list, compares adjacent elements and swaps them if they are in the wrong order.</p>
+                
+                <div class="complexity-box">
+                    <div class="complexity-item">
+                        <span>Time Complexity (Best):</span>
+                        <span>O(n) - When array is already sorted</span>
+                    </div>
+                    <div class="complexity-item">
+                        <span>Time Complexity (Average):</span>
+                        <span>O(n²)</span>
+                    </div>
+                    <div class="complexity-item">
+                        <span>Time Complexity (Worst):</span>
+                        <span>O(n²)</span>
+                    </div>
+                    <div class="complexity-item">
+                        <span>Space Complexity:</span>
+                        <span>O(1)</span>
+                    </div>
+                </div>
+
+                <div class="pseudocode">
+procedure bubbleSort(A: list of sortable items)
+    n = length(A)
+    repeat
+        swapped = false
+        for i = 1 to n-1 inclusive do
+            if A[i-1] > A[i] then
+                swap(A[i-1], A[i])
+                swapped = true
+            end if
+        end for
+    until not swapped
+end procedure</div>
+
+                <div class="example">
+                    <h4>Example:</h4>
+                    <p>Initial array: [64, 34, 25, 12, 22, 11, 90]</p>
+                    <p>Pass 1: [34, 25, 12, 22, 11, 64, 90]</p>
+                    <p>Pass 2: [25, 12, 22, 11, 34, 64, 90]</p>
+                    <p>Final: [11, 12, 22, 25, 34, 64, 90]</p>
+                </div>
+            </div>
+
+            <div id="quick-sort">
+                <h3>Quick Sort</h3>
+                <p>Quick Sort is a divide-and-conquer algorithm that works by selecting a 'pivot' element and partitioning the array around it.</p>
+
+                <div class="complexity-box">
+                    <div class="complexity-item">
+                        <span>Time Complexity (Best):</span>
+                        <span>O(n log n)</span>
+                    </div>
+                    <div class="complexity-item">
+                        <span>Time Complexity (Average):</span>
+                        <span>O(n log n)</span>
+                    </div>
+                    <div class="complexity-item">
+                        <span>Time Complexity (Worst):</span>
+                        <span>O(n²) - Rare with good pivot selection</span>
+                    </div>
+                    <div class="complexity-item">
+                        <span>Space Complexity:</span>
+                        <span>O(log n)</span>
+                    </div>
+                </div>
+
+                <div class="math-formula">
+                    T(n) = T(k) + T(n-k-1) + Θ(n)
+                    where k is the number of elements less than the pivot
+                </div>
+
+                <div class="pseudocode">
+algorithm quicksort(A, lo, hi) is
+    if lo < hi then
+        p := partition(A, lo, hi)
+        quicksort(A, lo, p - 1)
+        quicksort(A, p + 1, hi)
+
+algorithm partition(A, lo, hi) is
+    pivot := A[hi]
+    i := lo
+    for j := lo to hi - 1 do
+        if A[j] < pivot then
+            swap A[i] with A[j]
+            i := i + 1
+    swap A[i] with A[hi]
+    return i</div>
+            </div>
+
+            <div id="merge-sort">
+                <h3>Merge Sort</h3>
+                <p>Merge Sort is a divide-and-conquer algorithm that recursively divides the array into two halves, sorts them, and then merges the sorted halves.</p>
+
+                <div class="complexity-box">
+                    <div class="complexity-item">
+                        <span>Time Complexity (Best):</span>
+                        <span>O(n log n)</span>
+                    </div>
+                    <div class="complexity-item">
+                        <span>Time Complexity (Average):</span>
+                        <span>O(n log n)</span>
+                    </div>
+                    <div class="complexity-item">
+                        <span>Time Complexity (Worst):</span>
+                        <span>O(n log n)</span>
+                    </div>
+                    <div class="complexity-item">
+                        <span>Space Complexity:</span>
+                        <span>O(n)</span>
+                    </div>
+                </div>
+
+                <div class="math-formula">
+                    T(n) = 2T(n/2) + Θ(n)
+                    Solution: T(n) = Θ(n log n)
+                </div>
+
+                <div class="pseudocode">
+algorithm mergeSort(A, left, right) is
+    if left < right then
+        middle = (left + right) / 2
+        mergeSort(A, left, middle)
+        mergeSort(A, middle + 1, right)
+        merge(A, left, middle, right)
+
+algorithm merge(A, left, middle, right) is
+    L = A[left..middle]
+    R = A[middle+1..right]
+    i = j = 0
+    k = left
+    while i < length(L) and j < length(R) do
+        if L[i] ≤ R[j] then
+            A[k] = L[i]
+            i = i + 1
+        else
+            A[k] = R[j]
+            j = j + 1
+        k = k + 1
+    
+    // Copy remaining elements
+    while i < length(L) do
+        A[k] = L[i]
+        i = i + 1
+        k = k + 1
+    while j < length(R) do
+        A[k] = R[j]
+        j = j + 1
+        k = k + 1</div>
+            </div>
+
+            <div id="insertion-sort">
+                <h3>Insertion Sort</h3>
+                <p>Insertion Sort builds the final sorted array one item at a time by repeatedly inserting a new element into the sorted portion of the array.</p>
+
+                <div class="complexity-box">
+                    <div class="complexity-item">
+                        <span>Time Complexity (Best):</span>
+                        <span>O(n) - When array is already sorted</span>
+                    </div>
+                    <div class="complexity-item">
+                        <span>Time Complexity (Average):</span>
+                        <span>O(n²)</span>
+                    </div>
+                    <div class="complexity-item">
+                        <span>Time Complexity (Worst):</span>
+                        <span>O(n²)</span>
+                    </div>
+                    <div class="complexity-item">
+                        <span>Space Complexity:</span>
+                        <span>O(1)</span>
+                    </div>
+                </div>
+
+                <div class="pseudocode">
+algorithm insertionSort(A) is
+    for i = 1 to length(A) - 1 do
+        key = A[i]
+        j = i - 1
+        while j ≥ 0 and A[j] > key do
+            A[j + 1] = A[j]
+            j = j - 1
+        A[j + 1] = key</div>
+
+                <div class="example">
+                    <h4>Example:</h4>
+                    <p>Initial array: [64, 34, 25, 12, 22]</p>
+                    <p>After i=1: [34, 64, 25, 12, 22]</p>
+                    <p>After i=2: [25, 34, 64, 12, 22]</p>
+                    <p>After i=3: [12, 25, 34, 64, 22]</p>
+                    <p>Final: [12, 22, 25, 34, 64]</p>
+                </div>
+            </div>
+
+            <div id="selection-sort">
+                <h3>Selection Sort</h3>
+                <p>Selection Sort divides the input list into a sorted and an unsorted region, and repeatedly selects the smallest element from the unsorted region to add to the sorted region.</p>
+
+                <div class="complexity-box">
+                    <div class="complexity-item">
+                        <span>Time Complexity (Best):</span>
+                        <span>O(n²)</span>
+                    </div>
+                    <div class="complexity-item">
+                        <span>Time Complexity (Average):</span>
+                        <span>O(n²)</span>
+                    </div>
+                    <div class="complexity-item">
+                        <span>Time Complexity (Worst):</span>
+                        <span>O(n²)</span>
+                    </div>
+                    <div class="complexity-item">
+                        <span>Space Complexity:</span>
+                        <span>O(1)</span>
+                    </div>
+                </div>
+
+                <div class="pseudocode">
+algorithm selectionSort(A) is
+    for i = 0 to length(A) - 1 do
+        min_idx = i
+        for j = i + 1 to length(A) do
+            if A[j] < A[min_idx] then
+                min_idx = j
+        swap A[i] with A[min_idx]</div>
+            </div>
+
+            <div id="heap-sort">
+                <h3>Heap Sort</h3>
+                <p>Heap Sort uses a binary heap data structure to sort elements. It first builds a max heap and then repeatedly extracts the maximum element.</p>
+
+                <div class="complexity-box">
+                    <div class="complexity-item">
+                        <span>Time Complexity (Best):</span>
+                        <span>O(n log n)</span>
+                    </div>
+                    <div class="complexity-item">
+                        <span>Time Complexity (Average):</span>
+                        <span>O(n log n)</span>
+                    </div>
+                    <div class="complexity-item">
+                        <span>Time Complexity (Worst):</span>
+                        <span>O(n log n)</span>
+                    </div>
+                    <div class="complexity-item">
+                        <span>Space Complexity:</span>
+                        <span>O(1)</span>
+                    </div>
+                </div>
+
+                <div class="math-formula">
+                    Parent(i) = ⌊(i-1)/2⌋
+                    LeftChild(i) = 2i + 1
+                    RightChild(i) = 2i + 2
+                </div>
+
+                <div class="pseudocode">
+algorithm heapSort(A) is
+    buildMaxHeap(A)
+    for i = length(A) - 1 down to 1 do
+        swap A[0] with A[i]
+        heapify(A, 0, i)
+
+algorithm buildMaxHeap(A) is
+    for i = length(A)/2 down to 0 do
+        heapify(A, i, length(A))
+
+algorithm heapify(A, i, n) is
+    largest = i
+    left = 2i + 1
+    right = 2i + 2
+    
+    if left < n and A[left] > A[largest] then
+        largest = left
+    if right < n and A[right] > A[largest] then
+        largest = right
+        
+    if largest ≠ i then
+        swap A[i] with A[largest]
+        heapify(A, largest, n)</div>
+            </div>
+        </section>
+
+        <section id="searching" class="algorithm-section">
+            <h2>Searching Algorithms</h2>
+
+            <div id="binary-search">
+                <h3>Binary Search</h3>
+                <p>Binary Search is an efficient algorithm for searching a sorted array by repeatedly dividing the search interval in half.</p>
+
+                <div class="complexity-box">
+                    <div class="complexity-item">
+                        <span>Time Complexity (Best):</span>
+                        <span>O(1)</span>
+                    </div>
+                    <div class="complexity-item">
+                        <span>Time Complexity (Average):</span>
+                        <span>O(log n)</span>
+                    </div>
+                    <div class="complexity-item">
+                        <span>Time Complexity (Worst):</span>
+                        <span>O(log n)</span>
+                    </div>
+                    <div class="complexity-item">
+                        <span>Space Complexity:</span>
+                        <span>O(1)</span>
+                    </div>
+                </div>
+
+                <div class="math-formula">
+                    Number of steps = ⌊log₂(n)⌋ + 1
+                    where n is the size of the array
+                </div>
+
+                <div class="pseudocode">
+algorithm binarySearch(A, target) is
+    left = 0
+    right = length(A) - 1
+    while left ≤ right do
+        mid = (left + right) / 2
+        if A[mid] = target then
+            return mid
+        else if A[mid] < target then
+            left = mid + 1
+        else
+            right = mid - 1
+    return -1  // Not found</div>
+            </div>
+
+            <div id="linear-search">
+                <h3>Linear Search</h3>
+                <p>Linear Search is the simplest search algorithm that checks each element in the array sequentially until a match is found.</p>
+
+                <div class="complexity-box">
+                    <div class="complexity-item">
+                        <span>Time Complexity (Best):</span>
+                        <span>O(1)</span>
+                    </div>
+                    <div class="complexity-item">
+                        <span>Time Complexity (Average):</span>
+                        <span>O(n)</span>
+                    </div>
+                    <div class="complexity-item">
+                        <span>Time Complexity (Worst):</span>
+                        <span>O(n)</span>
+                    </div>
+                    <div class="complexity-item">
+                        <span>Space Complexity:</span>
+                        <span>O(1)</span>
+                    </div>
+                </div>
+
+                <div class="pseudocode">
+algorithm linearSearch(A, target) is
+    for i = 0 to length(A) - 1 do
+        if A[i] = target then
+            return i
+    return -1  // Not found</div>
+            </div>
+        </section>
+
+        <section id="graph" class="algorithm-section">
+            <h2>Graph Algorithms</h2>
+            
+            <div id="dijkstra">
+                <h3>Dijkstra's Algorithm</h3>
+                <p>Dijkstra's algorithm finds the shortest paths between nodes in a graph, which may represent, for example, road networks.</p>
+
+                <div class="complexity-box">
+                    <div class="complexity-item">
+                        <span>Time Complexity:</span>
+                        <span>O((V + E) log V) with binary heap</span>
+                    </div>
+                    <div class="complexity-item">
+                        <span>Space Complexity:</span>
+                        <span>O(V)</span>
+                    </div>
+                </div>
+
+                <div class="math-formula">
+                    d[v] = min(d[v], d[u] + w(u,v))
+                    where d[v] is the distance to vertex v
+                    and w(u,v) is the weight of edge (u,v)
+                </div>
+
+                <div class="pseudocode">
+function Dijkstra(Graph, source):
+    dist[source] := 0
+    for each vertex v in Graph:
+        if v ≠ source
+            dist[v] := infinity
+        prev[v] := undefined
+        Q.add_with_priority(v, dist[v])
+    
+    while Q is not empty:
+        u := Q.extract_min()
+        for each neighbor v of u:
+            alt := dist[u] + length(u, v)
+            if alt < dist[v]:
+                dist[v] := alt
+                prev[v] := u
+                Q.decrease_priority(v, alt)</div>
+            </div>
+
+            <div id="bfs">
+                <h3>Breadth-First Search (BFS)</h3>
+                <p>BFS explores a graph level by level, visiting all neighbors of a node before moving to the next level.</p>
+
+                <div class="complexity-box">
+                    <div class="complexity-item">
+                        <span>Time Complexity:</span>
+                        <span>O(V + E)</span>
+                    </div>
+                    <div class="complexity-item">
+                        <span>Space Complexity:</span>
+                        <span>O(V)</span>
+                    </div>
+                </div>
+
+                <div class="pseudocode">
+procedure BFS(G, start_v):
+    let Q be a queue
+    label start_v as discovered
+    Q.enqueue(start_v)
+    while Q is not empty
+        v := Q.dequeue()
+        for all edges from v to w in G.adjacentEdges(v) do
+            if w is not labeled as discovered
+                label w as discovered
+                Q.enqueue(w)</div>
+            </div>
+
+            <div id="dfs">
+                <h3>Depth-First Search (DFS)</h3>
+                <p>DFS explores a graph by going as deep as possible along each branch before backtracking.</p>
+
+                <div class="complexity-box">
+                    <div class="complexity-item">
+                        <span>Time Complexity:</span>
+                        <span>O(V + E)</span>
+                    </div>
+                    <div class="complexity-item">
+                        <span>Space Complexity:</span>
+                        <span>O(V)</span>
+                    </div>
+                </div>
+
+                <div class="pseudocode">
+procedure DFS(G, v) is
+    label v as discovered
+    for all edges from v to w in G.adjacentEdges(v) do
+        if vertex w is not labeled as discovered then
+            recursively call DFS(G, w)</div>
+            </div>
+
+            <div id="prim">
+                <h3>Prim's Algorithm (MST)</h3>
+                <p>Prim's algorithm finds a minimum spanning tree for a weighted undirected graph by growing the tree one vertex at a time.</p>
+
+                <div class="complexity-box">
+                    <div class="complexity-item">
+                        <span>Time Complexity:</span>
+                        <span>O(E log V) with binary heap</span>
+                    </div>
+                    <div class="complexity-item">
+                        <span>Space Complexity:</span>
+                        <span>O(V)</span>
+                    </div>
+                </div>
+
+                <div class="pseudocode">
+algorithm Prim(G) is
+    for each vertex v in G do
+        key[v] := infinity
+        parent[v] := NULL
+    
+    key[arbitrary starting vertex] := 0
+    Q := set of all vertices
+    
+    while Q is not empty do
+        u := vertex in Q with minimum key
+        remove u from Q
+        
+        for each edge (u,v) with weight w do
+            if v in Q and w < key[v] then
+                parent[v] := u
+                key[v] := w</div>
+            </div>
+
+            <div id="kruskal">
+                <h3>Kruskal's Algorithm (MST)</h3>
+                <p>Kruskal's algorithm finds a minimum spanning forest of an undirected edge-weighted graph by considering edges in ascending order of weight.</p>
+
+                <div class="complexity-box">
+                    <div class="complexity-item">
+                        <span>Time Complexity:</span>
+                        <span>O(E log E) or O(E log V)</span>
+                    </div>
+                    <div class="complexity-item">
+                        <span>Space Complexity:</span>
+                        <span>O(V)</span>
+                    </div>
+                </div>
+
+                <div class="pseudocode">
+algorithm Kruskal(G) is
+    A := empty set
+    for each vertex v in G do
+        MakeSet(v)
+    
+    sort edges of G by weight
+    for each edge (u,v) in G ordered by weight do
+        if Find(u) ≠ Find(v) then
+            add edge (u,v) to A
+            Union(u,v)
+    return A</div>
+            </div>
+        </section>
+
+        <section id="tree" class="algorithm-section">
+            <h2>Tree Algorithms</h2>
+            
+            <div id="avl">
+                <h3>AVL Tree</h3>
+                <p>AVL trees are self-balancing binary search trees where the heights of the two child subtrees of any node differ by at most one.</p>
+
+                <div class="complexity-box">
+                    <div class="complexity-item">
+                        <span>Time Complexity (Search):</span>
+                        <span>O(log n)</span>
+                    </div>
+                    <div class="complexity-item">
+                        <span>Time Complexity (Insert):</span>
+                        <span>O(log n)</span>
+                    </div>
+                    <div class="complexity-item">
+                        <span>Time Complexity (Delete):</span>
+                        <span>O(log n)</span>
+                    </div>
+                    <div class="complexity-item">
+                        <span>Space Complexity:</span>
+                        <span>O(n)</span>
+                    </div>
+                </div>
+
+                <div class="math-formula">
+                    Balance Factor = Height(Left Subtree) - Height(Right Subtree)
+                    |Balance Factor| ≤ 1 for all nodes
+                </div>
+
+                <h4>Rotation Operations:</h4>
+                <div class="example">
+                    <p><strong>Left Rotation:</strong> Used when a node becomes right-heavy</p>
+                    <p><strong>Right Rotation:</strong> Used when a node becomes left-heavy</p>
+                    <p><strong>Left-Right Rotation:</strong> Combination of left rotation followed by right rotation</p>
+                    <p><strong>Right-Left Rotation:</strong> Combination of right rotation followed by left rotation</p>
+                </div>
+            </div>
+
+            <div id="bst">
+                <h3>Binary Search Tree Operations</h3>
+                <p>A Binary Search Tree is a binary tree where each node's left subtree has values less than the node's value, and the right subtree has values greater than the node's value.</p>
+
+                <div class="complexity-box">
+                    <div class="complexity-item">
+                        <span>Time Complexity (Average):</span>
+                        <span>O(log n) for all operations</span>
+                    </div>
+                    <div class="complexity-item">
+                        <span>Time Complexity (Worst):</span>
+                        <span>O(n) for unbalanced tree</span>
+                    </div>
+                    <div class="complexity-item">
+                        <span>Space Complexity:</span>
+                        <span>O(n)</span>
+                    </div>
+                </div>
+
+                <div class="pseudocode">
+algorithm insert(root, key) is
+    if root is null then
+        return new Node(key)
+    if key < root.key then
+        root.left = insert(root.left, key)
+    else if key > root.key then
+        root.right = insert(root.right, key)
+    return root
+
+algorithm search(root, key) is
+    if root is null or root.key = key then
+        return root
+    if key < root.key then
+        return search(root.left, key)
+    return search(root.right, key)</div>
+            </div>
+
+            <div id="tree-traversal">
+                <h3>Tree Traversal Algorithms</h3>
+                <p>Tree traversal algorithms define different ways to visit all nodes in a tree in a specific order.</p>
+
+                <div class="complexity-box">
+                    <div class="complexity-item">
+                        <span>Time Complexity:</span>
+                        <span>O(n) for all traversals</span>
+                    </div>
+                    <div class="complexity-item">
+                        <span>Space Complexity:</span>
+                        <span>O(h) where h is tree height</span>
+                    </div>
+                </div>
+
+                <div class="pseudocode">
+algorithm inorderTraversal(node) is
+    if node is not null then
+        inorderTraversal(node.left)
+        visit(node)
+        inorderTraversal(node.right)
+
+algorithm preorderTraversal(node) is
+    if node is not null then
+        visit(node)
+        preorderTraversal(node.left)
+        preorderTraversal(node.right)
+
+algorithm postorderTraversal(node) is
+    if node is not null then
+        postorderTraversal(node.left)
+        postorderTraversal(node.right)
+        visit(node)</div>
+
+                <div class="example">
+                    <h4>For tree:      5</h4>
+                    <p>              /   \</p>
+                    <p>             3     7</p>
+                    <p>            / \   / \</p>
+                    <p>           2   4 6   8</p>
+                    <p><strong>Inorder:</strong> 2, 3, 4, 5, 6, 7, 8 (sorted order)</p>
+                    <p><strong>Preorder:</strong> 5, 3, 2, 4, 7, 6, 8 (root first)</p>
+                    <p><strong>Postorder:</strong> 2, 4, 3, 6, 8, 7, 5 (leaves first)</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>Created with ❤️ for algorithm enthusiasts</p>
+        </div>
+    </footer>
+</body>
+</html> 

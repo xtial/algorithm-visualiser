@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algorithm Visualizer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <h1 class="logo">Algorithm Visualizer</h1>
+            <nav class="nav-links">
+                <a href="algorithm-explanations.html">Deep Dive</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="control-panel">
+            <div class="controls-grid">
+                <select id="algorithm-select">
+                    <optgroup label="Sorting Algorithms">
+                        <option value="bubble">Bubble Sort</option>
+                        <option value="quick">Quick Sort</option>
+                        <option value="merge">Merge Sort</option>
+                        <option value="insertion">Insertion Sort</option>
+                        <option value="selection">Selection Sort</option>
+                        <option value="heap">Heap Sort</option>
+                    </optgroup>
+                    <optgroup label="Searching Algorithms">
+                        <option value="binary">Binary Search</option>
+                        <option value="linear">Linear Search</option>
+                    </optgroup>
+                    <optgroup label="Graph Algorithms">
+                        <option value="dijkstra">Dijkstra's Algorithm</option>
+                        <option value="bfs">Breadth First Search</option>
+                        <option value="dfs">Depth First Search</option>
+                        <option value="prim">Prim's MST</option>
+                        <option value="kruskal">Kruskal's MST</option>
+                    </optgroup>
+                    <optgroup label="Tree Algorithms">
+                        <option value="inorder">Inorder Traversal</option>
+                        <option value="preorder">Preorder Traversal</option>
+                        <option value="postorder">Postorder Traversal</option>
+                        <option value="bst">BST Operations</option>
+                        <option value="avl">AVL Tree</option>
+                    </optgroup>
+                </select>
+
+                <div class="data-input-section">
+                    <div class="input-group" id="array-input">
+                        <label class="input-label" for="custom-data">Custom Array Data</label>
+                        <input type="text" id="custom-data" placeholder="5,3,8,1,9" />
+                        <div class="input-hint">Enter comma-separated numbers (e.g., 5,3,8,1,9)</div>
+                        <button id="apply-custom-data" class="btn-secondary">Apply Custom Data</button>
+                    </div>
+                    
+                    <div class="input-group" id="graph-input" style="display: none;">
+                        <label class="input-label" for="graph-data">Graph Data</label>
+                        <textarea id="graph-data" placeholder="0,1,4&#10;1,2,3&#10;2,0,5"></textarea>
+                        <div class="input-hint">Enter one edge per line in format: source,target,weight&#10;Example:&#10;0,1,4 (edge from node 0 to 1 with weight 4)&#10;1,2,3 (edge from node 1 to 2 with weight 3)</div>
+                        <button id="apply-graph-data" class="btn-secondary">Apply Graph Data</button>
+                    </div>
+                    
+                    <div class="input-group" id="tree-input" style="display: none;">
+                        <label class="input-label" for="tree-data">Tree Data</label>
+                        <input type="text" id="tree-data" placeholder="5,3,7,1,4,6,8" />
+                        <div class="input-hint">For BST/AVL: Enter comma-separated numbers&#10;For traversal: Numbers will be inserted in BST order</div>
+                        <button id="apply-tree-data" class="btn-secondary">Apply Tree Data</button>
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button id="generate-array" class="btn-primary">Generate New Data</button>
+                    <button id="start-visualization" class="btn-success">Start Visualization</button>
+                </div>
+
+                <div class="slider-group">
+                    <div class="slider-control">
+                        <label for="speed-control">Speed</label>
+                        <input type="range" id="speed-control" min="1" max="100" value="50">
+                    </div>
+                    <div class="slider-control">
+                        <label for="size-control">Size</label>
+                        <input type="range" id="size-control" min="5" max="100" value="50">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="visualization-container">
+            <div id="visualization-area"></div>
+            <div class="info-panel">
+                <div class="info-section">
+                    <h3>Controls</h3>
+                    <div class="shortcuts-list">
+                        <div class="shortcut-item">
+                            <kbd>Space</kbd>
+                            <span>Start/Pause</span>
+                        </div>
+                        <div class="shortcut-item">
+                            <kbd>N</kbd>
+                            <span>New Data</span>
+                        </div>
+                        <div class="shortcut-item">
+                            <kbd>←/→</kbd>
+                            <span>Step by Step</span>
+                        </div>
+                        <div class="shortcut-item">
+                            <kbd>R</kbd>
+                            <span>Reset</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-section">
+                    <h3>Current Step</h3>
+                    <div id="step-description"></div>
+                </div>
+
+                <div class="info-section">
+                    <h3>Performance</h3>
+                    <div class="timing-info">
+                        <label>Time Elapsed:</label>
+                        <span id="time-elapsed">0.00s</span>
+                    </div>
+                    <div class="timing-info">
+                        <label>Operations:</label>
+                        <span id="operation-count">0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="info-panel">
+            <h2>Algorithm Explanation</h2>
+            <div id="algorithm-description"></div>
+            <div class="timing-info">
+                <label>Time Complexity:</label>
+                <span id="time-complexity"></span>
+            </div>
+            <div class="timing-info">
+                <label>Space Complexity:</label>
+                <span id="space-complexity"></span>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>Created with ❤️ for algorithm enthusiasts</p>
+        </div>
+    </footer>
+
+    <script src="js/algorithms.js"></script>
+    <script src="js/visualizer.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html> 
