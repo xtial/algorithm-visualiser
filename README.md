@@ -59,6 +59,81 @@ A comprehensive web-based tool for visualizing and understanding algorithms and 
 
 3. Open `index.html` in your web browser to start using the visualizer.
 
+## Deployment on GitHub Pages
+
+### Method 1: Project Site (Recommended for Multiple Projects)
+1. Create a new repository named `algorithm-visualizer`
+2. Push your code to this repository:
+   ```bash
+   git init
+   git add .
+   git commit -m "Initial commit"
+   git remote add origin https://github.com/yourusername/algorithm-visualizer.git
+   git push -u origin main
+   ```
+3. Go to repository Settings > Pages
+4. Under "Source", select "main" branch
+5. Your site will be available at: `https://yourusername.github.io/algorithm-visualizer`
+
+### Method 2: User/Organization Site
+If you want to host multiple projects under your GitHub Pages:
+
+1. Create a repository named `yourusername.github.io`
+2. Create a subdirectory for this project:
+   ```bash
+   mkdir -p projects/algorithm-visualizer
+   cp -r algorithm-visualizer/* projects/algorithm-visualizer/
+   ```
+3. Update all relative paths in HTML files to include the project path:
+   ```html
+   <!-- Update paths from -->
+   <link rel="stylesheet" href="css/styles.css">
+   <!-- to -->
+   <link rel="stylesheet" href="/projects/algorithm-visualizer/css/styles.css">
+   ```
+4. Push to GitHub:
+   ```bash
+   git add .
+   git commit -m "Add algorithm visualizer"
+   git push
+   ```
+5. Your site will be available at: `https://yourusername.github.io/projects/algorithm-visualizer`
+
+### Project Structure for Multiple GitHub Pages Projects
+```
+yourusername.github.io/
+├── index.html              # Main portfolio/projects page
+├── projects/
+│   ├── algorithm-visualizer/
+│   │   ├── index.html
+│   │   ├── css/
+│   │   ├── js/
+│   │   └── ...
+│   ├── project2/
+│   │   └── ...
+│   └── project3/
+│       └── ...
+└── README.md
+```
+
+### Tips for Managing Multiple Projects
+1. **Consistent Navigation**: Add navigation links between projects
+2. **Central Portfolio**: Create an index page listing all projects
+3. **Domain Setup**: You can use a custom domain for all projects
+4. **Version Control**: 
+   - Use separate repositories for each project (Method 1)
+   - Or maintain all projects in one repository (Method 2)
+
+### Common Issues and Solutions
+1. **Broken Links**: Ensure all resource paths are correct
+   - Use relative paths from project root
+   - Or use absolute paths from domain root
+2. **404 Errors**: Add a custom 404 page
+3. **Path Issues**: Update `base` tag in HTML:
+   ```html
+   <base href="/algorithm-visualizer/">
+   ```
+
 ## Usage Guide
 
 ### Basic Controls
